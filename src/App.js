@@ -1,178 +1,221 @@
-import React from "react";
-import "./styles.css";
+import { useEffect, useState } from 'react'
+import './styles.scss';
+
+import { Title, CssReference, Example, Requirement, Method } from './components'
 
 import {
-  TEXT_NO_1,
-  TEXT_NO_2,
-  PEOPLE_LIST,
-  NUMBER_LIST,
-  HOTEL
-} from "./constants";
-import { capitalizeFirstLetter, capitalizeString } from "./helpers";
+  EXAMPLE,
+  TEXT_NO_1_LOWER_CASE,
+  TEXT_NO_2_LOWER_CASE,
+  TEXT_NO_3_LOWER_CASE,
+  BOOKS,
+  FRUITS,
+  STEPS,
+} from './constants'
+import { capitalizeFirstLetter, capitalizeEachWord } from './helpers';
 
 export default function App() {
+  // BEGIN - COLOR_SCHEME_VS_ON_COLOR_SCHEME_CHANGE_FUNC
+  const [colorScheme, setColorScheme] = useState('');
+  const onColorSchemeChange = (e) => setColorScheme(e.target.value)
+  // END - COLOR_SCHEME_VS_ON_COLOR_SCHEME_CHANGE_FUNC
+
+  useEffect(() => {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView()
+    }
+  }, []);
+
   return (
-    <div className={"container"}>
-      <h1 className={"my-54 text-center"}>
-        CSS vs JS
-        <br />
-        <span> - for styling - </span>
-      </h1>
+    <div className={`color-scheme-js ${colorScheme}`}>
+      <div className='container'>
+        <Title />
 
-      <div className={"sample"}>
-        <h3 id={"first_letter_pseudo_el_vs_cap_first_letter_func"}>
-          <a href={"#first_letter_pseudo_el_vs_cap_first_letter_func"}>
-            <strong>::first-letter</strong>
-            <span> pseudo-element vs </span>
-            <strong>capitalizeFirstLetter(str)</strong>
-          </a>
-        </h3>
-        <p className={"using-css cap-first-letter"}>{TEXT_NO_1}</p>
-        <p className={"using-js"}>{capitalizeFirstLetter(TEXT_NO_1)}</p>
-        <p>
-          The ::first-letter CSS pseudo-element applies styles to the first
-          letter of the first line of a block-level element, but only when not
-          preceded by other content (such as images or inline tables).
-        </p>
-      </div>
+        <CssReference name='Properties'>
+          <Example {...EXAMPLE.TEXT_TRANSFORM_UPPERCASE_VS_STR_TO_UPPER_CASE_METH}>
+            <Requirement source={TEXT_NO_1_LOWER_CASE}>
+              <p>Converts all the alphabetic characters in a string to uppercase.</p>
+            </Requirement>
 
-      <div className={"sample"}>
-        <h3 id={"text_trans_cap_pseudo_class_vs_cap_str_func"}>
-          <a href={"#text_trans_cap_pseudo_class_vs_cap_str_func"}>
-            <strong>text-transform: capitalize;</strong>
-            <span> CSS property/value pair vs </span>
-            <strong>capitalizeString(str)</strong>
-          </a>
-        </h3>
-        <p className={"using-css cap-str"}>{TEXT_NO_2}</p>
-        <p className={"using-js"}>{capitalizeString(TEXT_NO_2)}</p>
-      </div>
+            <Method name='css'>
+              <div className='text-uppercase-css'>{TEXT_NO_1_LOWER_CASE}</div>
+            </Method>
 
-      <div className={"sample"}>
-        <h3
-          id="text_trans_uppercase_prop_vs_str_to_upper_case_method"
-          className="mb-8"
-        >
-          <a href="#text_trans_uppercase_prop_vs_str_to_upper_case_method">
-            <strong>text-transform: uppercase;</strong>
-            <span> CSS property/value pair vs </span>
-            <strong>str.toUpperCase()</strong> method
-          </a>
-        </h3>
-        <p className={"font-size-12 mt-0"}>
-          <span>Similar for </span>
-          <strong>text-transform: lowercase;</strong>
-          <span> CSS property/value pair vs </span>
-          <strong>str.toLowerCase()</strong> method
-        </p>
+            <Method name='js'>
+              <div>{TEXT_NO_1_LOWER_CASE.toUpperCase()}</div>
+            </Method>
+          </Example>
 
-        <p className={"using-css uppercased"}>{HOTEL}</p>
-        <p className={"using-js"}>{HOTEL.toUpperCase()}</p>
-      </div>
+          <Example {...EXAMPLE.TEXT_TRANSFORM_CAPITALIZE_VS_CAPITALIZE_STR_FUNC}>
+            <Requirement source={TEXT_NO_2_LOWER_CASE}>
+              <p>Capitalize the first letter of each word in a string.</p>
+            </Requirement>
 
-      <div className={"sample"}>
-        <h3 id={"last_child_pseudo_cls_vs_is_last_item_var"}>
-          <a href={"#last_child_pseudo_cls_vs_is_last_item_var"}>
-            <strong>:last-child</strong>
-            <span> pseudo-class vs </span>
-            <strong>isLastItem</strong> variable
-          </a>
-        </h3>
-        <p>
-          {PEOPLE_LIST.map((item, index) => (
-            <span key={index} className={`using-css people-item-css`}>
-              {item.name}
-            </span>
-          ))}
-        </p>
+            <Method name='css'>
+              <div className='text-transform-capitalize-css'>{TEXT_NO_2_LOWER_CASE}</div>
+            </Method>
 
-        <p>
-          {PEOPLE_LIST.map((item, index) => {
-            const isLastItem = index === PEOPLE_LIST.length - 1;
-            return (
-              <span
-                key={index}
-                className={`using-js ${isLastItem ? "" : "people-item-js"}`}
-              >
-                {item.name}
-              </span>
-            );
-          })}
-        </p>
-      </div>
+            <Method name='js'>
+              <div>{capitalizeEachWord(TEXT_NO_2_LOWER_CASE)}</div>
+            </Method>
+          </Example>
 
-      <div className={"sample"}>
-        <h3 id={"nth_of_type_even_pseudo_class_vs_is_even_item_var"}>
-          <a href={"#nth_of_type_even_pseudo_class_vs_is_even_item_var"}>
-            <strong>:nth-of-type(even)</strong>
-            <span> pseudo-class vs </span>
-            <strong>isEvenItem</strong> variable
-          </a>
-        </h3>
-        <p>
-          {NUMBER_LIST.map((item, index) => (
-            <span
-              key={index}
-              className={`using-css number-item number-item-css`}
-            >
-              {item}
-            </span>
-          ))}
-        </p>
 
-        <p>
-          {NUMBER_LIST.map((item, index) => {
-            const isEvenItem = index % 2 === 0;
-            return (
-              <span
-                key={index}
-                className={`using-js number-item-js ${
-                  isEvenItem ? "" : "number-even-item-js"
-                }`}
-              >
-                {item}
-              </span>
-            );
-          })}
-        </p>
-      </div>
+          <Example {...EXAMPLE.COLOR_SCHEME_VS_ON_COLOR_SCHEME_CHANGE_FUNC}>
+            <Requirement>
+              <p>Create custom "light" and "dark" color schemes for the entire page.</p>
+            </Requirement>
 
-      <div className={"sample"}>
-        <p>
-          <strong>:nth-of-type(even)</strong>
-          <span> pseudo-class vs </span>
-          <strong>isEvenItem</strong> variable
-        </p>
-        <p>
-          {NUMBER_LIST.map((item, index) => (
-            <span
-              key={index}
-              className={`using-css number-item number-item-css`}
-            >
-              {item}
-            </span>
-          ))}
-        </p>
+            <Method name='css'>
+              <div>
+                <label htmlFor='color-selector-css'>Choose color scheme</label>
+                <select id='color-selector-css'>
+                  <option value="">Auto</option>
+                  <option value="lightCSS">Light</option>
+                  <option value="darkCSS">Dark</option>
+                </select>
+              </div>
+            </Method>
 
-        <p>
-          {NUMBER_LIST.map((item, index) => {
-            const isEvenItem = index % 2 === 0;
-            return (
-              <span
-                key={index}
-                className={`using-js number-item-js ${
-                  isEvenItem ? "" : "number-even-item-js"
-                }`}
-              >
-                {item}
-              </span>
-            );
-          })}
-        </p>
-      </div>
+            <Method name='js'>
+              <div>
+                <label htmlFor='color-selector-js'>Choose color scheme</label>
+                <select
+                  id='color-selector-js'
+                  value={colorScheme}
+                  onChange={onColorSchemeChange}
+                >
+                  <option value="">Auto</option>
+                  <option value="lightJS">Light</option>
+                  <option value="darkJS">Dark</option>
+                </select>
+              </div>
+            </Method>
+          </Example>
+        </CssReference>
 
-      <div className={"sample"} style={{ height: "100vh" }}>
-        Hello
+        <CssReference name='Pseudo-classes'>
+          <Example {...EXAMPLE.LAST_CHILD_PSEUDO_CLASS_VS_IS_LAST_CHILD_VAR}>
+            <Requirement source={STEPS}>
+              <p>
+                Display a list of step names, separated by arrows.
+                The last step name in the list should not be followed by an arrow!
+              </p>
+            </Requirement>
+
+            <Method name='css'>
+              <ul className='ul-li-inline-block'>{
+                STEPS.map((user, index) => (
+                  <li key={index} className='last-child-css'>
+                    {user.name}
+                  </li>
+              ))}</ul>
+            </Method>
+
+            <Method name='js'>
+              <ul className='ul-li-inline-block'>{
+                STEPS.map((user, index) => {
+                  const isLastChild = index === STEPS.length - 1;
+                  return (
+                    <li key={index} className={`${isLastChild ? '' : 'last-child-js'}`}>
+                      {user.name}
+                    </li>
+                  );
+              })}</ul>
+            </Method>
+          </Example>
+
+          <Example {...EXAMPLE.NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_EVEN_VAR}>
+            <Requirement source={FRUITS}>
+              <p>
+                Display a list of fruits in an ordered list of items and
+                apply a bold font weight to each even item in the list.
+              </p>
+            </Requirement>
+
+            <Method name='css'>
+              <ol className='ol-inline-block'>{
+                FRUITS.map((fruit, index) => (
+                  <li key={index} className='nth-of-type-even-css'>
+                    {fruit.name}
+                  </li>
+              ))}</ol>
+            </Method>
+
+            <Method name='js'>
+              <ol className='ol-inline-block'>{
+                FRUITS.map((fruit, index) => {
+                  const isEven = (index + 1) % 2 === 0;
+                  return (
+                    <li key={index} className={isEven ? 'nth-of-type-even-js' : ''}>
+                      {fruit.name}
+                    </li>
+                  );
+              })}</ol>
+            </Method>
+          </Example>
+
+          <Example {...EXAMPLE.ONLY_CHILD_PSEUDO_CLASS_VS_IS_ONLY_CHILD_VAR}>
+            <Requirement source={BOOKS}>
+              <div>
+                Display a list of books, organized by genre.
+                Each genre name should be displayed as a list item,
+                and titles of books in that genre should be displayed as sub-items under the genre name.
+                <br />
+                For single sub-item book title apply a bold font weight.
+              </div>
+            </Requirement>
+
+            <Method name='css'>
+              <ol className='ol-inline-block'>{
+                BOOKS.map(({ genre, books }, index) => (
+                  <li key={index}>
+                    <span>{genre}</span>
+                    <ul>{
+                      books.map((book,idx) => (
+                        <li key={idx} className='only-child-css'>
+                          {book.title}
+                        </li>
+                    ))}</ul>
+                  </li>
+              ))}</ol>
+            </Method>
+
+            <Method name='js'>
+              <ol className='ol-inline-block'>{
+                BOOKS.map(({ genre, books }, index) => (
+                  <li key={index}>
+                    <span>{genre}</span>
+                    <ul>{
+                      books.map((book, index) => {
+                        const isOnlyChild = books.length === 1
+                        return (
+                          <li key={index} className={isOnlyChild ? 'only-child-js' : ''}>
+                            {book.title}
+                          </li>
+                    )})}</ul>
+                  </li>
+              ))}</ol>
+            </Method>
+          </Example>
+        </CssReference>
+
+        <CssReference name='Pseudo-elements'>
+          <Example {...EXAMPLE.FIRST_LETTER_PSEUDO_EL_VS_CAPITALIZE_FIRST_LETTER_FUNC}>
+            <Requirement source={TEXT_NO_3_LOWER_CASE}>
+              <div>Capitalize the first letter of a string.</div>
+            </Requirement>
+            <Method name='css'>
+              <div className='first-letter-css'>{TEXT_NO_3_LOWER_CASE}</div>
+            </Method>
+
+            <Method name='js'>
+              <div>{capitalizeFirstLetter(TEXT_NO_3_LOWER_CASE)}</div>
+            </Method>
+          </Example>
+        </CssReference>
       </div>
     </div>
   );

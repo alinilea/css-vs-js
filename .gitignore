@@ -1,1 +1,15 @@
-node_modules
+# IDE/editors
+.idea
+.vscode
+
+# dependencies
+/node_modules
+
+# local env files
+.env
+
+# production
+/build
+
+# debug
+npm-debug.log*

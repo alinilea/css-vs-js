@@ -1,23 +1,34 @@
 {
-  "name": "css-vs-js-for-styling",
+  "name": "css-vs-js-in-react",
   "author": "Alin Ilea",
   "version": "1.0.0",
-  "description": "Write CSS instead of JS for styling",
-  "keywords": ["css vs js", "css instead of js for styling"],
+  "description": "For styling, write CSS instead of JS whenever possible.",
+  "keywords": [
+    "css vs js",
+    "css vs js in react",
+    "css versus js",
+    "css instead of js"
+  ],
   "main": "src/index.js",
-  "dependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-scripts": "5.0.1"
-  },
-  "devDependencies": {
-    "@babel/runtime": "7.13.8"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@babel/runtime": "7.13.8",
+    "sass": "^1.61.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
