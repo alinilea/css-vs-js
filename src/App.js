@@ -65,13 +65,20 @@ export default function App() {
 
           <Example {...EXAMPLE.COLOR_SCHEME_VS_ON_COLOR_SCHEME_CHANGE_FUNC}>
             <Requirement>
-              <p>Create custom "light" and "dark" color schemes for the entire page.</p>
+              <p>
+                When the user's OS color scheme preference is "Dark",
+                and the app's selected color scheme is "Auto",
+                the app should use dark color scheme.
+                <br />
+                Create custom "light" and "dark" color schemes
+                to manually overwrite the user's OS color scheme preferences.
+              </p>
             </Requirement>
 
             <Method name='css'>
               <div>
-                <label htmlFor='color-selector-css'>Choose color scheme</label>
-                <select id='color-selector-css'>
+                <label htmlFor='select-color-scheme-css-id'>Choose color scheme</label>
+                <select id='select-color-scheme-css-id'>
                   <option value="">Auto</option>
                   <option value="lightCSS">Light</option>
                   <option value="darkCSS">Dark</option>
@@ -81,9 +88,9 @@ export default function App() {
 
             <Method name='js'>
               <div>
-                <label htmlFor='color-selector-js'>Choose color scheme</label>
+                <label htmlFor='select-color-scheme-js-id'>Choose color scheme</label>
                 <select
-                  id='color-selector-js'
+                  id='select-color-scheme-js-id'
                   value={colorScheme}
                   onChange={onColorSchemeChange}
                 >
