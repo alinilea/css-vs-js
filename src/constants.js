@@ -96,7 +96,7 @@ export const EXAMPLE = {
   },
 }
 
-export const COLOR_SCHEME = {
+export const COLOR_SCHEME_OPTION = {
   LIGHT_JS: 'lightJS',
   DARK_JS: 'darkJS',
   LIGHT_CSS: 'lightCSS',

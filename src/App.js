@@ -11,7 +11,7 @@ import {
   BOOKS,
   FRUITS,
   STEPS,
-  COLOR_SCHEME,
+  COLOR_SCHEME_OPTION,
 } from './constants'
 import { capitalizeFirstLetter, capitalizeEachWord } from './helpers';
 
@@ -81,8 +81,8 @@ export default function App() {
                 <label htmlFor='color-scheme-css-id'>Choose color scheme</label>
                 <select id='color-scheme-css-id'>
                   <option value="">Auto</option>
-                  <option value={COLOR_SCHEME.LIGHT_CSS} selected>Light</option>
-                  <option value={COLOR_SCHEME.DARK_CSS}>Dark</option>
+                  <option value={COLOR_SCHEME_OPTION.LIGHT_CSS} selected>Light</option>
+                  <option value={COLOR_SCHEME_OPTION.DARK_CSS}>Dark</option>
                 </select>
               </div>
             </Method>
