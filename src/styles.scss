@@ -245,18 +245,16 @@ section .note {
   }
 }
 
-
-/* TEXT_TRANSFORM_CAPITALIZE_VS_CAPITALIZE_STR_FUNC */
-.text-transform-capitalize-css {
-  text-transform: capitalize;
-}
-
+/* BEGIN - EXAMPLES */
 /* TEXT_TRANSFORM_UPPERCASE_VS_STR_TO_UPPER_CASE_METH */
 .text-uppercase-css {
   text-transform: uppercase;
 }
 
-
+/* TEXT_TRANSFORM_CAPITALIZE_VS_CAPITALIZE_STR_FUNC */
+.text-transform-capitalize-css {
+  text-transform: capitalize;
+}
 
 /* LAST_CHILD_PSEUDO_CLASS_VS_IS_LAST_CHILD_VAR */
 .last-child-css {
@@ -310,3 +308,4 @@ section .note {
 .first-letter-css::first-letter {
   text-transform: uppercase;
 }
+/* END - EXAMPLES */

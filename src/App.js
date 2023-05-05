@@ -37,7 +37,7 @@ export default function App() {
         <CssReference name='Properties'>
           <Example {...EXAMPLE.TEXT_TRANSFORM_UPPERCASE_VS_STR_TO_UPPER_CASE_METH}>
             <Requirement source={TEXT_NO_1_LOWER_CASE}>
-              <p>Converts all the alphabetic characters in a string to uppercase.</p>
+              <p>Convert all the alphabetic characters in a string to uppercase.</p>
             </Requirement>
 
             <Method name='css'>
@@ -51,7 +51,7 @@ export default function App() {
 
           <Example {...EXAMPLE.TEXT_TRANSFORM_CAPITALIZE_VS_CAPITALIZE_STR_FUNC}>
             <Requirement source={TEXT_NO_2_LOWER_CASE}>
-              <p>Capitalize the first letter of each word in a string.</p>
+              <p>Convert the first letter of each word in a string to uppercase.</p>
             </Requirement>
 
             <Method name='css'>
@@ -67,12 +67,12 @@ export default function App() {
           <Example {...EXAMPLE.COLOR_SCHEME_VS_ON_COLOR_SCHEME_CHANGE_FUNC}>
             <Requirement>
               <p>
-                When the user's OS color scheme preference is "Dark",
-                and the app's selected color scheme is "Auto",
-                the app should use dark color scheme.
-                <br />
                 Create custom "light" and "dark" color schemes
-                to manually overwrite the user's OS color scheme preference.
+                to manually change the user's OS color scheme preference.
+                <br />
+                When "Auto" is selected, the user's OS color scheme preference
+                is detected by the prefers-color-scheme media feature,
+                which applies the app's defined color scheme.
               </p>
             </Requirement>
 
@@ -109,6 +109,7 @@ export default function App() {
             <Requirement source={STEPS}>
               <p>
                 Display a list of step names, separated by arrows.
+                <br />
                 The last step name in the list should not be followed by an arrow!
               </p>
             </Requirement>
