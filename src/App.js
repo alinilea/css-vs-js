@@ -71,7 +71,7 @@ export default function App() {
                 the app should use dark color scheme.
                 <br />
                 Create custom "light" and "dark" color schemes
-                to manually overwrite the user's OS color scheme preferences.
+                to manually overwrite the user's OS color scheme preference.
               </p>
             </Requirement>
 

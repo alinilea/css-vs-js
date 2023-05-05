@@ -1,5 +1,5 @@
 {
-  "name": "css-vs-js-in-react",
+  "name": "css-vs-js-for-styling-in-react",
   "author": "Alin Ilea",
   "version": "1.0.0",
   "description": "For styling, write CSS instead of JS whenever possible.",

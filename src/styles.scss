@@ -1,17 +1,60 @@
 :root {
   color-scheme: light dark;
+  --background-color: #fff;
+  --text-color: #000;
   --primary-color: #008000;
   --secondary-color: #e70000;
   --white-color: #fff;
-  --black-color: #202020;
   font-family: Roboto, 'Open Sans', sans-serif;
   scroll-behavior: smooth;
 }
 
-body {
-  --background-color: #fff;
-  --text-color: #222;
+/* BEGIN - COLOR_SCHEME_VS_ON_COLOR_SCHEME_CHANGE_FUNC */
+/* the `prefer-color-scheme` media feature detects the user's OS color scheme preference
+and applies it if the selected app's color scheme is `Auto`.
+ */
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #f8f8f8;
+    --text-color: #353535;
+  }
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #353535;
+    --text-color: #f8f8f8;
+  }
+}
+
+/* the custom `light` and `dark` CSS color schemes */
+:root:has(option[value="lightCSS"]:checked) {
+  color-scheme: light;
+  --background-color: #fff;
+  --text-color: #202020
+}
+:root:has(option[value="darkCSS"]:checked) {
+  color-scheme: dark;
+  --background-color: #202020;
+  --text-color: #fff;
+}
+
+/* the custom `light` and `dark` JS color schemes */
+:root:has(.color-scheme-js.lightJS) {
+  color-scheme: light;
+  --background-color: #fff;
+  --text-color: #202020
+}
+:root:has(.color-scheme-js.darkJS) {
+  color-scheme: dark;
+  --background-color: #202020;
+  --text-color: #fff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+/* END - COLOR_SCHEME_VS_ON_COLOR_SCHEME_CHANGE_FUNC */
 
 .container {
   width: 342px;
@@ -41,16 +84,26 @@ label:has(+ select) {
 }
 
 .title {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
   margin-top: 54px;
   margin-bottom: 40px;
-  span:nth-of-type(1) {
-    color: var(--primary-color);
-  }
-  span:nth-of-type(3) {
-    color: var(--secondary-color);
+  .title-row {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 12px;
+    &:first-child {
+      gap: 10px;
+      span:nth-of-type(1) {
+        color: var(--primary-color);
+      }
+      span:nth-of-type(3) {
+        color: var(--secondary-color);
+      }
+    }
+    &:last-child {
+      gap: 6px;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
   }
 }
 
@@ -201,59 +254,7 @@ section .note {
   text-transform: uppercase;
 }
 
-/* COLOR_SCHEME_VS_ON_COLOR_SCHEME_CHANGE_FUNC */
-/* the `prefer-color-scheme` media feature detects the user's OS color scheme preference
-and applies it if the selected app's color scheme is `Auto`.
- */
-@media (prefers-color-scheme: light) {
-  body {
-    --background-color: #fff;
-    --text-color: #222;
-  }
-}
-@media (prefers-color-scheme: dark) {
-  body {
-    --background-color: #353535;
-    --text-color: #fff;
-  }
-}
 
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-/* the custom `light` and `dark` CSS color schemes */
-:root:has(option[value="lightCSS"]:checked) {
-  color-scheme: light;
-  body {
-    --background-color: var(--white-color);
-    --text-color: var(--black-color)
-  }
-}
-:root:has(option[value="darkCSS"]:checked) {
-  color-scheme: dark;
-  body {
-    --background-color: var(--black-color);
-    --text-color: var(--white-color);
-  }
-}
-
-/* the custom `light` and `dark` JS color schemes */
-:root:has(.color-scheme-js.lightJS) {
-  color-scheme: light;
-  body {
-    --background-color: var(--white-color);
-    --text-color: var(--black-color)
-  }
-}
-:root:has(.color-scheme-js.darkJS) {
-  color-scheme: dark;
-  body {
-    --background-color: var(--black-color);
-    --text-color: var(--white-color);
-  }
-}
 
 /* LAST_CHILD_PSEUDO_CLASS_VS_IS_LAST_CHILD_VAR */
 .last-child-css {
