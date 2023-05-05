@@ -95,3 +95,10 @@ export const EXAMPLE = {
     },
   },
 }
+
+export const COLOR_SCHEME = {
+  LIGHT_JS: 'lightJS',
+  DARK_JS: 'darkJS',
+  LIGHT_CSS: 'lightCSS',
+  DARK_CSS: 'darkCSS',
+}
