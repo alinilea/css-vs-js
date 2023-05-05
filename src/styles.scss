@@ -273,11 +273,8 @@ section .note {
 }
 
 /* NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_EVEN_VAR */
+/* similar to nth-of-type(even) is nth-child(even) */
 .nth-of-type-even-css:nth-of-type(even) {
-  font-weight: bold;
-  text-decoration: underline;
-}
-.nth-of-type-even-js {
   font-weight: bold;
   text-decoration: underline;
 }

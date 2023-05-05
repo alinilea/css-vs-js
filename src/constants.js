@@ -71,11 +71,11 @@ export const EXAMPLE = {
   NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_EVEN_VAR: {
     heading: {
       id: NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_EVEN_VAR,
-      cssText: ':nth-of-type(even)',
+      cssText: ':nth-of-type(even) or nth-child(even)',
       jsText: 'isEven'
     },
     note: {
-      cssText: ':nth-of-type(odd)',
+      cssText: ':nth-of-type(odd) or nth-child(odd)',
       jsText: 'isOdd'
     }
   },

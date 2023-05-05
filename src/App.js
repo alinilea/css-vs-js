@@ -79,9 +79,12 @@ export default function App() {
             <Method name='css'>
               <div>
                 <label htmlFor='color-scheme-css-id'>Choose color scheme</label>
-                <select id='color-scheme-css-id'>
+                <select
+                  id='color-scheme-css-id'
+                  defaultValue={COLOR_SCHEME_OPTION.LIGHT_CSS}
+                >
                   <option value="">Auto</option>
-                  <option value={COLOR_SCHEME_OPTION.LIGHT_CSS} selected>Light</option>
+                  <option value={COLOR_SCHEME_OPTION.LIGHT_CSS}>Light</option>
                   <option value={COLOR_SCHEME_OPTION.DARK_CSS}>Dark</option>
                 </select>
               </div>
@@ -96,8 +99,8 @@ export default function App() {
                   onChange={onColorSchemeChange}
                 >
                   <option value="">Auto</option>
-                  <option value="lightJS">Light</option>
-                  <option value="darkJS">Dark</option>
+                  <option value={COLOR_SCHEME_OPTION.LIGHT_JS}>Light</option>
+                  <option value={COLOR_SCHEME_OPTION.DARK_JS}>Dark</option>
                 </select>
               </div>
             </Method>
@@ -156,9 +159,10 @@ export default function App() {
             <Method name='js'>
               <ol className='ol-inline-block'>{
                 FRUITS.map((fruit, index) => {
-                  const isEven = (index + 1) % 2 === 0;
+                  // nth-of-type(even) starts at 1 vs index here starts at 0
+                  const isEven = index % 2 === 0;
                   return (
-                    <li key={index} className={isEven ? 'nth-of-type-even-js' : ''}>
+                    <li key={index} className={isEven ? '' : 'nth-of-type-even-js'}>
                       {fruit.name}
                     </li>
                   );
