@@ -70,8 +70,9 @@ export default function App() {
                 Create custom "light" and "dark" color schemes
                 to manually change the user's OS color scheme preference.
                 <br />
+                <br />
                 When "Auto" is selected, the user's OS color scheme preference
-                is detected by the prefers-color-scheme media feature,
+                is detected by the "prefers-color-scheme" media feature,
                 which applies the app's defined color scheme.
               </p>
             </Requirement>
@@ -139,11 +140,16 @@ export default function App() {
             </Method>
           </Example>
 
-          <Example {...EXAMPLE.NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_EVEN_VAR}>
+          <Example {...EXAMPLE.NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_ODD_VAR}>
             <Requirement source={FRUITS}>
               <p>
                 Display a list of fruits in an ordered list of items and
                 apply a bold font weight to each even item in the list.
+                <br />
+                <br />
+                Remember that "nth-of-type()"/"nth-child()" in CSS uses a 1-based index, while
+                the array we are iterating through in JS uses a 0-based index.
+                That's why we use "isOdd" instead of "isEven".
               </p>
             </Requirement>
 
@@ -159,10 +165,9 @@ export default function App() {
             <Method name='js'>
               <ol className='ol-inline-block'>{
                 FRUITS.map((fruit, index) => {
-                  // nth-of-type(even) starts at 1 vs index here starts at 0
-                  const isEven = index % 2 === 0;
+                  const isOdd = index % 2 !== 0;
                   return (
-                    <li key={index} className={isEven ? '' : 'nth-of-type-even-js'}>
+                    <li key={index} className={isOdd ? 'nth-of-type-odd-js' : ''}>
                       {fruit.name}
                     </li>
                   );

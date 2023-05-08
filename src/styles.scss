@@ -240,7 +240,6 @@ section .note {
     /* recommended instead of .only-child-css:only-child */
     //:only-child {
     //  font-weight: bold;
-    //  list-style-type: disc;
     //}
   }
 }
@@ -272,15 +271,13 @@ section .note {
   padding: 0 8px;
 }
 
-/* NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_EVEN_VAR */
-/* similar to nth-of-type(even) is nth-child(even) */
+/* NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_ODD_VAR */
+/* similarly, it applies to nth-child(even) */
 .nth-of-type-even-css:nth-of-type(even) {
   font-weight: bold;
-  text-decoration: underline;
 }
-.nth-of-type-even-js {
+.nth-of-type-odd-js {
   font-weight: bold;
-  text-decoration: underline;
 }
 
 .ul-li-inline-block {
@@ -298,11 +295,9 @@ section .note {
 /* ONLY_CHILD_PSEUDO_CLASS_VS_IS_ONLY_CHILD_VAR */
 .only-child-css:only-child {
   font-weight: bold;
-  list-style-type: disc;
 }
 .only-child-js {
   font-weight: bold;
-  list-style-type: disc;
 }
 
 /* FIRST_LETTER_PSEUDO_EL_VS_CAPITALIZE_FIRST_LETTER_FUNC */

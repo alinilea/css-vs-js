@@ -24,7 +24,7 @@ const TEXT_TRANSFORM_CAPITALIZE_VS_CAPITALIZE_STR_FUNC = 'text_transform_capital
 const COLOR_SCHEME_VS_ON_COLOR_SCHEME_CHANGE_FUNC = 'color_scheme_vs_on_color_scheme_change_func'
 
 const LAST_CHILD_PSEUDO_CLASS_VS_IS_LAST_CHILD_VAR = 'last_child_pseudo_class_vs_is_last_child_var'
-const NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_EVEN_VAR = 'nth_of_type_even_pseudo_class_vs_is_even_var'
+const NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_ODD_VAR = 'nth_of_type_even_pseudo_class_vs_is_odd_var'
 const ONLY_CHILD_PSEUDO_CLASS_VS_IS_ONLY_CHILD_VAR = 'only_child_pseudo_class_vs_is_only_child_var'
 
 const FIRST_LETTER_PSEUDO_EL_VS_CAPITALIZE_FIRST_LETTER_FUNC = 'first_letter_pseudo_el_vs_capitalize_first_letter_func'
@@ -68,15 +68,15 @@ export const EXAMPLE = {
       jsText: 'isFirstChild',
     }
   },
-  NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_EVEN_VAR: {
+  NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_ODD_VAR: {
     heading: {
-      id: NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_EVEN_VAR,
-      cssText: ':nth-of-type(even) or nth-child(even)',
-      jsText: 'isEven'
+      id: NTH_OF_TYPE_EVEN_PSEUDO_CLASS_VS_IS_ODD_VAR,
+      cssText: ':nth-of-type(even)/nth-child(even)',
+      jsText: 'isOdd'
     },
     note: {
-      cssText: ':nth-of-type(odd) or nth-child(odd)',
-      jsText: 'isOdd'
+      cssText: ':nth-of-type(odd)/nth-child(odd)',
+      jsText: 'isEven'
     }
   },
   ONLY_CHILD_PSEUDO_CLASS_VS_IS_ONLY_CHILD_VAR: {
